@@ -1,0 +1,26 @@
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #2660a4;
+  --secondary-color-variant: rgba(38, 96, 164, 0.1);
+  --accent-color: #0cca4a;
+  --accent-color-variant: rgba(12, 202, 74, 0.4);
+  --dark-color: #000000;
+  --dark-color-variant: rgba(0, 0, 0, 0.4);
+  --dark-color-variant-2: rgba(0, 0, 0, 0.2);
+  --error-color: #ff0000;
+}
+body {
+  background-color: var(--primary-color);
+  font-family: "Poppins", sans-serif;
+}
+
+.btn {
+  padding: 8px 16px;
+  color: var(--primary-color);
+  background-color: var(--accent-color);
+  border-radius: 12px;
+}
+.btn:hover {
+  background-color: var(--accent-color-variant);
+  color: var(--secondary-color);
+}
