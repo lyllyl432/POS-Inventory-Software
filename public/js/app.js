@@ -18,4 +18,8 @@ $(document).ready(function () {
 
     $(".dropdown-menu").height(totalHeight);
   });
+
+  $("#create-unit").on("click", function () {
+    $(".modal").css("display", "block");
+  });
 });
