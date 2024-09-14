@@ -7,7 +7,7 @@
   --dark-color: #000000;
   --dark-color-variant: rgba(0, 0, 0, 0.4);
   --dark-color-variant-2: rgba(0, 0, 0, 0.2);
-  --error-color: #ff0000;
+  --error-color: #d11a2a;
 }
 body {
   background-color: var(--primary-color);
@@ -23,4 +23,11 @@ body {
 .btn:hover {
   background-color: var(--accent-color-variant);
   color: var(--secondary-color);
+}
+.btn.btn-error {
+  background-color: var(--error-color);
+  color: var(--primary-color);
+}
+.btn.btn-error:hover {
+  color: var(--dark-color);
 }

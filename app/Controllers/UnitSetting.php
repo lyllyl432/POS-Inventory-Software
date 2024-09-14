@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class UnitSetting extends BaseController
+class Unitsetting extends BaseController
 {
     public function index(): string
     {

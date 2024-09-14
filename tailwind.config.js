@@ -11,6 +11,7 @@ module.exports = {
         dark: "#000000",
         "dark-variant": "rgba(0,0,0,0.4)",
         "dark-variant-2": "rgba(0,0,0,0.2)",
+        error: "#D11A2A",
       },
     },
   },
