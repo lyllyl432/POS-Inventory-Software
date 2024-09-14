@@ -14,7 +14,12 @@ $routes->post('add-product', 'Product::add');
 $routes->post('edit-product', 'Product::edit');
 $routes->post('delete-product', 'Product::delete');
 // unit setting routes
-$routes->get('unit-setting', 'Unitsetting::index');
-$routes->post('add-unit', 'Unitsetting::add');
-$routes->post('edit-unit', 'Unitsetting::edit');
-$routes->post('delete-unit', 'Unitsetting::delete');
+$routes->get('unit', 'Unit::index');
+//warehouse setting routes
+$routes->get('warehouse', 'Warehouse::index');
+//category setting routes
+$routes->get('category', 'Category::index');
+//brand setting routes
+$routes->get('brand', 'Brand::index');
+//currency setting routes
+$routes->get('currency', 'Currency::index');

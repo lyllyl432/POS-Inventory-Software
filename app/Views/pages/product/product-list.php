@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 
 <div class="flex items-center gap-4 border-b-2">
-    <h1 class="text-5xl  pb-6 jus">Product List</h1>
+    <h1 class="text-5xl  pb-6">Product List</h1>
     <p class="text-base text-dark-variant relative bottom-2">Products | Product List</p>
 </div>
 <div class="mt-8 flex justify-end">
