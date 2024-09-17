@@ -17,8 +17,9 @@ class Product extends BaseController
         return view('pages/product/create-product');
     }
     //handle add product list
-    public function add()
+    public function create()
     {
+
         $data = [
             'product_code' => $this->request->getPost('product-code'),
             'product_name' => $this->request->getPost('product-name'),
@@ -59,7 +60,7 @@ class Product extends BaseController
         return view('pages/product/product-list');
     }
     //handle edit product list
-    public function edit()
+    public function update()
     {
         $product_code = $this->request->getPost('edit_product_code');
         $data = [

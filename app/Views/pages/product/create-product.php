@@ -23,7 +23,7 @@
 <!-- MULTIPLE IMAGE  -->
 <!-- FORM  -->
 <section class="mt-16 min-h-screen pb-6">
-    <?= form_open('add-product') ?>
+    <?= form_open('create-product') ?>
     <div class="px-4 py-8 shadow-md rounded-xl">
         <div class="flex gap-10">
             <div class="grid flex-1">

@@ -88,7 +88,7 @@
                     <?= $product['tax_type'] ?>
                 </td>
                 <td class="px-6 py-4 flex gap-4">
-                    <form class="edit-product">
+                    <form class="update-product">
                         <input type="hidden" name="product_code" value="<?= $product['product_code'] ?>">
                         <button class="btn" type="submit">Edit</button>
                     </form>

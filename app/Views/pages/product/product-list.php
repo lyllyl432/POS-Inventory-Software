@@ -18,7 +18,7 @@
 <!-- edit modal  -->
 <div class="modal absolute top-10 left-1/2 -translate-x-1/2 z-10 w-2/5 bg-primary shadow-md px-6 py-4 hidden">
     <h2 class="text-2xl">Edit Product</h2>
-    <form method="post" id="edit-modal">
+    <form method="post" id="update-modal">
         <input type="hidden" id="edit-product-code" name="edit_product_code">
         <div class="grid gap-y-2">
             <label for="name">Name</label>

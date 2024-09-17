@@ -1,8 +1,4 @@
 $(document).ready(function () {
-  const base = "http://localhost:8080/";
-  function baseUrl(uri) {
-    return base + uri;
-  }
   $(".dropdown-list").on("click", function (e) {
     e.preventDefault();
     //add total height accumolator
@@ -23,5 +19,9 @@ $(document).ready(function () {
     }
 
     $(this).next().height(totalHeight);
+  });
+  //show create modal for every settings
+  $(".create").on("click", function () {
+    $(".create-modal").css("display", "block");
   });
 });

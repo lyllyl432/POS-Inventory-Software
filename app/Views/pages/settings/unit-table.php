@@ -7,9 +7,9 @@
             <th scope="col" class="px-6 py-3">
                 Short Name
             </th>
-            <th scope="col" class="px-6 py-3">
+            <!-- <th scope="col" class="px-6 py-3">
                 Base Unit
-            </th>
+            </th> -->
             <th scope="col" class="px-6 py-3">
                 Actions
             </th>
@@ -21,12 +21,15 @@
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <?= $unit['unit_name'] ?>
                 </td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <?= $unit['unit_short_name'] ?>
+                </td>
                 <td class="px-6 py-4 flex gap-4">
-                    <form class="edit-product">
+                    <form class="update-unit">
                         <input type="hidden" name="unit_id" value="<?= $unit['id'] ?>">
                         <button class="btn" type="submit">Edit</button>
                     </form>
-                    <form class="delete-product">
+                    <form class="delete-unit">
                         <input type="hidden" name="unit_id" value="<?= $unit['id'] ?>">
                         <button class="btn btn-error" type="submit">Delete</button>
                     </form>

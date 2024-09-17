@@ -36,27 +36,52 @@
             </div>
         </div>
     </div>
+    <div class="relative overflow-x-auto unit-list mt-4 min-h-4">
+        <img class="w-12 absolute left-1/2 -translate-x-1/2" src="<?= base_url() ?>icons/loader.gif">
+    </div>
 </div>
-
-
+<!-- create modal -->
 <div class="create-modal absolute top-10 left-1/2 -translate-x-1/2 z-10 w-2/5 bg-primary shadow-md px-6 py-4 hidden">
     <h2 class="text-2xl">Create</h2>
-    <form action="/create" method="post">
+    <form id="create-unit" method="post">
         <div class="grid gap-y-2">
-            <label for="name">Name</label>
-            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="name">
+            <label for="unit_name">Name</label>
+            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="unit_name">
         </div>
         <div class="grid mt-2 gap-y-2">
-            <label for="short-name">Short Name</label>
-            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="name">
+            <label for="unit_short-name">Short Name</label>
+            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="unit_short_name">
         </div>
-        <div class="grid mt-2 gap-y-2">
+        <!-- <div class="grid mt-2 gap-y-2">
             <label for="base-unit">Base Unit</label>
             <select class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="base-unit" id="">
                 <option value="" disabled selected>Choose base unit</option>
                 <option value="Hello">Hello</option>
             </select>
+        </div> -->
+        <button type="submit" class="btn mt-4">Submit</button>
+    </form>
+</div>
+<!-- edit modal  -->
+<div class="update-modal absolute top-10 left-1/2 -translate-x-1/2 z-10 w-2/5 bg-primary shadow-md px-6 py-4 hidden">
+    <h2 class="text-2xl">Edit Unit</h2>
+    <form id="update-modal" method="post">
+        <input type="hidden" id="unit-id" name="unit_id">
+        <div class="grid gap-y-2">
+            <label for="unit_name">Name</label>
+            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="unit_name">
         </div>
+        <div class="grid mt-2 gap-y-2">
+            <label for="unit_short-name">Short Name</label>
+            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="unit_short_name">
+        </div>
+        <!-- <div class="grid mt-2 gap-y-2">
+            <label for="base-unit">Base Unit</label>
+            <select class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="base-unit" id="">
+                <option value="" disabled selected>Choose base unit</option>
+                <option value="Hello">Hello</option>
+            </select>
+        </div> -->
         <button type="submit" class="btn mt-4">Submit</button>
     </form>
 </div>
