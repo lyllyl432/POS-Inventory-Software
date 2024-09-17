@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 class Unit extends BaseController
 {
+    protected $helpers = ['form'];
     protected $unitModel;
     public function __construct()
     {
@@ -28,12 +29,12 @@ class Unit extends BaseController
 
 
         if (!$this->validateData($data, $rules)) {
-            return view('pages/product/failed', ['errors' => $this->validator->getErrors()]);
+            return view('pages/settings/unit');
         }
 
         // $validData = $this->validator->getValidated();
         if (!$this->unitModel->insert($data, false)) {
-            return view('pages/product/failed');
+            return view('pages/settings/unit');
         }
         return view('pages/settings/unit');
     }
@@ -52,7 +53,7 @@ class Unit extends BaseController
 
 
         if (!$this->validateData($data, $rules)) {
-            return view('pages/product/failed', ['errors' => $this->validator->getErrors()]);
+            return view('pages/settings/unit');
         }
         $validData  = $this->validator->getValidated();
         $this->unitModel->update($unit_id, $validData);

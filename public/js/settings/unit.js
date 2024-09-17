@@ -7,27 +7,26 @@ $(document).ready(function () {
     $("#unit-id").val(value);
   });
   // update unit
-  $(document).on("submit", "#update-modal", function (e) {
-    e.preventDefault();
-    const formValue = $(this).serialize();
-    $.ajax({
-      url: BASE_URL + "update-unit",
-      type: "POST",
-      data: formValue,
-      beforeSend: () => {
-        $(".loader").show();
-      },
-      success: (value) => {
-        $(".update-modal").hide();
-        $(".unit-list").html(value);
-      },
-      complete: () => {
-        $(".loader").hide();
-      },
-    });
-  });
-  //delete unit
-  $(document).on("submit", ".delete-unit", function (e) {
+  // $(document).on("submit", "#update-modal", function (e) {
+  //   e.preventDefault();
+  //   const formValue = $(this).serialize();
+  //   $.ajax({
+  //     url: BASE_URL + "update-unit",
+  //     type: "POST",
+  //     data: formValue,
+  //     beforeSend: () => {
+  //       $(".loader").show();
+  //     },
+  //     success: (value) => {
+  //       $(".update-modal").hide();
+  //       $(".unit-list").html(value);
+  //     },
+  //     complete: () => {
+  //       $(".loader").hide();
+  //     },
+  //   });
+  // });
+  $("#delete-unit").on("submit", function (e) {
     e.preventDefault();
     const formValue = $(this).serialize();
     $.ajax({
@@ -38,7 +37,8 @@ $(document).ready(function () {
         $(".loader").show();
       },
       success: (value) => {
-        // $(".update-modal").hide();
+        $("#modal-delete").addClass("hidden");
+        $("#modal-delete-id").val();
         $(".unit-list").html(value);
       },
       complete: () => {
