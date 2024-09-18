@@ -5,6 +5,11 @@
     <h1 class="text-5xl  pb-6 jus">Unit</h1>
     <p class="text-base text-dark-variant relative bottom-2">Settings | Unit</p>
 </div>
+<!-- form message cell  -->
+<?= view_cell('FormSuccessCell', 'type=Unit') ?>
+<?= view_cell('FormErrorCell') ?>
+<!-- delete message cell  -->
+<?= view_cell('DeleteSuccessCell', 'type=Unit') ?>
 <div class="mt-24">
     <div class="flex justify-between">
         <div class="flex gap-2 items-center">
@@ -65,15 +70,15 @@
 <!-- edit modal  -->
 <div class="update-modal absolute top-10 left-1/2 -translate-x-1/2 z-10 w-2/5 bg-primary shadow-md px-6 py-4 hidden">
     <h2 class="text-2xl">Edit Unit</h2>
-    <form action="update-unit" id="update-modal" method="post">
+    <form id="update-modal" method="post">
         <input type="hidden" id="unit-id" name="unit_id">
         <div class="grid gap-y-2">
             <label for="unit_name">Name</label>
-            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="unit_name">
+            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" id="update-unit-name" type="text" name="unit_name">
         </div>
         <div class="grid mt-2 gap-y-2">
             <label for="unit_short-name">Short Name</label>
-            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="unit_short_name">
+            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" id="update-short-name" type="text" name="unit_short_name">
         </div>
         <!-- <div class="grid mt-2 gap-y-2">
             <label for="base-unit">Base Unit</label>

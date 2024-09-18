@@ -33,10 +33,4 @@ $(document).ready(function () {
     $("#modal-delete").addClass("hidden");
     $("#modal-delete-id").val();
   });
-  //show delete modal
-  $(document).on("click", ".btn-delete-unit", function (e) {
-    e.preventDefault();
-    $("#modal-delete").addClass("flex").removeClass("hidden");
-    $("#modal-delete-id").val($(this).siblings(".delete-unit-id").val());
-  });
 });

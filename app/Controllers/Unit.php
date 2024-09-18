@@ -53,15 +53,15 @@ class Unit extends BaseController
 
 
         if (!$this->validateData($data, $rules)) {
-            return view('pages/settings/unit');
+            return $this->response->setJSON(['message' => 'error']);
         }
         $validData  = $this->validator->getValidated();
         $this->unitModel->update($unit_id, $validData);
-        return $this->unitListTable();
+        return $this->response->setJSON(['message' => 'success', 'value' => $this->unitListTable()]);
     }
     public function delete()
     {
-        $unit_id = $this->request->getPost('unit_id');
+        $unit_id = $this->request->getPost('primary_key');
         $this->unitModel->where('id', $unit_id)->delete();
         return $this->unitListTable();
     }

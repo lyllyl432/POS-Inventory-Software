@@ -48,9 +48,9 @@
     <tbody>
         <?php foreach ($list as $product) : ?>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <?= $product['product_code'] ?>
-                </th>
+                </td>
                 <td class="px-6 py-4">
                     <?= $product['product_name'] ?>
                 </td>
@@ -88,14 +88,14 @@
                     <?= $product['tax_type'] ?>
                 </td>
                 <td class="px-6 py-4 flex gap-4">
-                    <form class="update-product">
-                        <input type="hidden" name="product_code" value="<?= $product['product_code'] ?>">
-                        <button class="btn" type="submit">Edit</button>
-                    </form>
-                    <form class="delete-product">
-                        <input type="hidden" name="product_code" value="<?= $product['product_code'] ?>">
-                        <button class="btn btn-error" type="submit">Delete</button>
-                    </form>
+                    <div>
+                        <input type="hidden" name="hide_update_id" value="<?= $product['product_code'] ?>">
+                        <button class="btn btn-update-product" type="submit">Edit</button>
+                    </div>
+                    <div>
+                        <input type="hidden" name="hide_delete_id" class="delete-product-code" value="<?= $product['product_code'] ?>">
+                        <button class="btn btn-error btn-delete-product" type="submit">Delete</button>
+                    </div>
                 </td>
             </tr>
         <?php endforeach ?>

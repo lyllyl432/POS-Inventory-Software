@@ -43,12 +43,13 @@
                     <?= $unit['unit_short_name'] ?>
                 </td>
                 <td class="px-6 py-4 flex gap-4 ">
-                    <form class="update-unit">
-                        <input type="hidden" name="unit_id" value="<?= $unit['id'] ?>">
-                        <button class="btn" type="submit">Edit</button>
-                    </form>
                     <div>
-                        <input type="hidden" class="delete-unit-id" value="<?= $unit['id'] ?>">
+                        <input type="hidden" name="hide_update_id" value="<?= $unit['id'] ?>">
+                        <button class="btn btn-update-unit" type="submit">Edit</button>
+                    </div>
+
+                    <div>
+                        <input type="hidden" name="hide_delete_id" class="delete-unit-id" value="<?= $unit['id'] ?>">
                         <button class="btn btn-error btn-delete-unit" type="submit">Delete</button>
                     </div>
                 </td>

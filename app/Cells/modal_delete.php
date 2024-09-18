@@ -25,8 +25,8 @@
         </div>
 
         <div class="flex flex-col space-y-2">
-            <form action="/hello world" id="delete-unit" method="post">
-                <input type="hidden" name="unit_id" id="modal-delete-id">
+            <form id="delete" method="post">
+                <input type="hidden" name="primary_key" id="modal-delete-id">
                 <button type="submit" id="delete-btn"
                     class="px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-error hover:bg-error active:bg-error w-full">Delete</button>
             </form>
