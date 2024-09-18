@@ -39,7 +39,7 @@ $routes->get('brand', 'Brand::index');
 $routes->post('create-brand', 'Brand::create');
 $routes->post('update-brand', 'Brand::update');
 $routes->post('delete-brand', 'Brand::delete');
-$routes->post('brand/table', 'Brand::brandListTable');
+$routes->get('brand/table', 'Brand::brandListTable');
 $routes->post('brand/table/list', 'Brand::brandList');
 //currency setting routes
 $routes->get('currency', 'Currency::index');

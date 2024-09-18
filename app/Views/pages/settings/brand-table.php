@@ -16,20 +16,27 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($list as $category) : ?>
+        <?php foreach ($list as $brand) : ?>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <?= $brand['brand_image'] ?>
-                </td>
                 <td class="px-6 py-4 flex gap-4">
-                    <form class="edit-product">
-                        <input type="hidden" name="brand_id" value="<?= $brand['id'] ?>">
-                        <button class="btn" type="submit">Edit</button>
-                    </form>
-                    <form class="delete-product">
-                        <input type="hidden" name="brand_id" value="<?= $brand['id'] ?>">
-                        <button class="btn btn-error" type="submit">Delete</button>
-                    </form>
+                    <img class="w-28" src="<?= base_url($brand['brand_image']) ?>" alt="<?= $brand['brand_name'] ?>">
+                </td>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <?= $brand['brand_name'] ?>
+                </td>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <?= $brand['brand_description'] ?>
+                </td>
+                <td class="px-6 py-4 flex gap-4 ">
+                    <div>
+                        <input type="hidden" name="hide_update_id" value="<?= $brand['id'] ?>">
+                        <button class="btn btn-update-brand" type="submit">Edit</button>
+                    </div>
+
+                    <div>
+                        <input type="hidden" name="hide_delete_id" class="delete-unit-id" value="<?= $brand['id'] ?>">
+                        <button class="btn btn-error btn-delete-brand" type="submit">Delete</button>
+                    </div>
                 </td>
             </tr>
         <?php endforeach ?>
