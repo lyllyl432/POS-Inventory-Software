@@ -2,11 +2,9 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Files\File;
-
 class Brand extends BaseController
 {
-    protected $helpers = ['form'];
+    protected $helpers = ['form', 'filesystem'];
     protected $brandModel;
     public function __construct()
     {
@@ -16,34 +14,35 @@ class Brand extends BaseController
     {
         return view('pages/settings/brand');
     }
+    //create brand 
     public function create()
     {
-
         $data = [
             'brand_name' => $this->request->getPost('brand_name'),
             'brand_description' => $this->request->getPost('brand_description'),
         ];
-        $rules = [
-            'userfile' => [
-                'label' => 'Image File',
-                'rules' => [
-                    'uploaded[userfile]',
-                    'is_image[userfile]',
-                    'mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
-                    'max_size[userfile,1000]',
-                    'max_dims[userfile,1024,768]',
+        if (!empty($this->request->getFile('userfile')->getName())) {
+            $rules = [
+                'userfile' => [
+                    'label' => 'Image File',
+                    'rules' => [
+                        'uploaded[userfile]',
+                        'is_image[userfile]',
+                        'mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
+                        'max_size[userfile,1000]',
+                        'max_dims[userfile,2000,2000]',
+                    ],
                 ],
-            ],
-            'brand_name' => 'required|is_unique[brand.brand_name]',
-            'brand_description' => 'required|max_length[50]',
-        ];
+                'brand_name' => 'required|is_unique[brand.brand_name]',
+                'brand_description' => 'required|max_length[50]',
+            ];
 
-        if (!$this->validateData($data, $rules)) {
-            return view('pages/settings/brand', ['message' => 'error']);
-        }
-        $img = $this->request->getFile('userfile');
-        $validData  = $this->validator->getValidated();
-        if (! $img->hasMoved()) {
+            if (!$this->validateData($data, $rules)) {
+                return view('pages/settings/brand', ['message' => 'error']);
+            }
+            $img = $this->request->getFile('userfile');
+
+            $validData  = $this->validator->getValidated();
             $imageName = $img->getRandomName();
             $img->move('uploads/', $imageName);
 
@@ -52,11 +51,89 @@ class Brand extends BaseController
             if (!$this->brandModel->insert($validData, false)) {
                 return view('pages/settings/brand', ['message' => 'error']);
             }
-
-            return view('pages/settings/brand', ['message' => 'success', 'value' => $this->brandListTable()]);
+        } else {
+            $file = new \CodeIgniter\Files\File($this->request->getPost('no_image'));
+            $imageName = $file->getBasename();
+            $rules = [
+                'brand_name' => 'required|is_unique[brand.brand_name]',
+                'brand_description' => 'required|max_length[50]',
+            ];
+            if (!$this->validateData($data, $rules)) {
+                return view('pages/settings/brand', ['message' => 'error']);
+            }
+            $validData  = $this->validator->getValidated();
+            $validData['brand_image'] = 'images/' . $imageName;
+            if (!$this->brandModel->insert($validData, false)) {
+                return view('pages/settings/brand', ['message' => 'error']);
+            }
         }
+        return view('pages/settings/brand', ['message' => 'success', 'value' => $this->brandListTable()]);
     }
-    //create product table template
+    //update brand
+    public function update()
+    {
+        $brand_id = $this->request->getPost('brand_id');
+        $data = [
+            'brand_name' => $this->request->getPost('brand_name'),
+            'brand_description' => $this->request->getPost('brand_description'),
+        ];
+
+        if (!empty($this->request->getFile('userfile')->getName())) {
+            $rules = [
+                'userfile' => [
+                    'label' => 'Image File',
+                    'rules' => [
+                        'uploaded[userfile]',
+                        'is_image[userfile]',
+                        'mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
+                        'max_size[userfile,1000]',
+                        'max_dims[userfile,2000,2000]',
+                    ],
+                ],
+                'brand_name' => 'required|is_unique[brand.brand_name]',
+                'brand_description' => 'required|max_length[50]',
+            ];
+
+            if (!$this->validateData($data, $rules)) {
+                return view('pages/settings/brand', ['message' => 'error']);
+            }
+            $file = new \CodeIgniter\Files\File($this->request->getPost('recent_image_src'));
+
+            if (file_exists(FCPATH . "uploads\\" . $file->getBasename())) {
+                unlink(FCPATH . "uploads\\" . $file->getBasename());
+
+                $img = $this->request->getFile('userfile');
+
+                $validData  = $this->validator->getValidated();
+                $imageName = $img->getRandomName();
+                $img->move('uploads/', $imageName);
+
+                $validData['brand_image'] = 'uploads/' . $imageName;
+
+                $this->brandModel->update($brand_id, $validData);
+            }
+        } else {
+
+            $rules = [
+                'brand_name' => 'required|is_unique[brand.brand_name]',
+                'brand_description' => 'required|max_length[50]',
+            ];
+            if (!$this->validateData($data, $rules)) {
+                return view('pages/settings/brand', ['message' => 'error']);
+            }
+            $validData  = $this->validator->getValidated();
+            $this->brandModel->update($brand_id, $validData);
+        }
+        return view('pages/settings/brand', ['message' => 'success', 'value' => $this->brandListTable()]);
+    }
+    //delete brand
+    public function delete()
+    {
+        $brand_id = $this->request->getPost('primary_key');
+        $this->brandModel->where('id', $brand_id)->delete();
+        return $this->brandListTable();
+    }
+    //create brand table template
     public function brandListTable()
     {
         $brand = $this->brandModel->findAll();

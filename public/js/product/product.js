@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  console.log(BASE_URL);
   $(document).on("click", ".btn-update-product", function () {
     $(".update-modal").show();
     //get value from closest tr

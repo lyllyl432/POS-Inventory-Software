@@ -17,7 +17,6 @@
 </head>
 
 <body>
-    <div class="hidden" id="base_url" data-id="<?= base_url() ?>"></div>
     <div class="flex">
         <?= $this->include('templates/sidebar') ?>
         <main class="max-w-5xl pt-6 flex-1 mx-auto">

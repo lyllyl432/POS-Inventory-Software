@@ -5,11 +5,12 @@
     <p class="text-base text-dark-variant relative bottom-2">Settings | Brand</p>
 </div>
 
+
 <!-- form message cell  -->
 <?= view_cell('FormSuccessCell', 'type=Brand') ?>
 <?= view_cell('FormErrorCell') ?>
 <!-- delete message cell  -->
-<?= view_cell('DeleteSuccessCell', 'type=Unit') ?>
+<?= view_cell('DeleteSuccessCell', 'type=Brand') ?>
 <div class="mt-24">
     <div class="flex justify-between">
         <div class="flex gap-2 items-center">
@@ -47,22 +48,32 @@
 </div>
 
 <!-- edit modal  -->
-<div class="edit-modal absolute top-10 left-1/2 -translate-x-1/2 z-10 w-2/5 bg-primary shadow-md px-6 py-4 hidden">
+<div class="update-modal absolute top-10 left-1/2 -translate-x-1/2 z-10 w-2/5 bg-primary shadow-md px-6 py-4 hidden">
     <h2 class="text-2xl">Edit Brand</h2>
-    <form method="post" id="edit-modal">
-        <input type="hidden" id="edit-product-code" name="edit_product_code">
-        <div class="grid gap-y-2">
-            <label for="name">Name</label>
-            <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="product_name">
-        </div>
-
-        <button type="submit" class="btn mt-4">Submit</button>
-    </form>
+    <?= form_open_multipart('update-brand') ?>
+    <input type="hidden" name="recent_image_src" id="recent_image_src">
+    <input type="hidden" name="brand_id" id="brand-id">
+    <div class="grid gap-y-2 mt-4">
+        <label for="name">Brand Name</label>
+        <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" id="update-brand-name" name="brand_name">
+    </div>
+    <div class="grid gap-y-2 mt-4">
+        <label for="name">Brand Description</label>
+        <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text"
+            id="update-brand-description" name="brand_description">
+    </div>
+    <div class="grid gap-y-2 mt-4">
+        <label for="name">Brand Image</label>
+        <input type="file" name="userfile" size="20" id="update-brand-image">
+    </div>
+    <button type="submit" class="btn mt-4">Submit</button>
+    <?= form_close() ?>
 </div>
 <!-- create modal  -->
 <div class="create-modal absolute top-10 left-1/2 -translate-x-1/2 z-10 w-2/4 bg-primary shadow-md px-6 py-4 hidden">
     <h2 class="text-2xl">Create Brand</h2>
     <?= form_open_multipart('create-brand') ?>
+    <input type="hidden" name="no_image" value="<?= base_url() ?>images/no-image.png">
     <div class="grid gap-y-2 mt-4">
         <label for="name">Brand Name</label>
         <input class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="brand_name">
@@ -78,5 +89,6 @@
     <button type="submit" class="btn mt-4">Submit</button>
     <?= form_close() ?>
 </div>
+<?= view_cell('ModalDeleteCell', 'type=brand') ?>
 <script src="<?= base_url() ?>js/settings/brand.js"></script>
 <?= $this->endSection() ?>

@@ -22,7 +22,7 @@ $(document).ready(function () {
   });
   //show create modal for every settings
   $(".create").on("click", function () {
-    $(".create-modal").css("display", "block");
+    $(".create-modal").show();
   });
   //remove delete confirmation
   $("#cancel-btn").on("click", function () {
