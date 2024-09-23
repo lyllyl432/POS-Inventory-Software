@@ -9,7 +9,7 @@ $routes->get('/', 'Home::index');
 //create product routes
 $routes->get('product', 'Product::index');
 $routes->get('product/table', 'Product::productListTable');
-$routes->get('product/table/list', 'Product::productList');
+$routes->get('product/list', 'Product::productList');
 $routes->post('create-product', 'Product::create');
 $routes->post('update-product', 'Product::update');
 $routes->post('delete-product', 'Product::delete');

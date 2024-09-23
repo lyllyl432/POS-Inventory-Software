@@ -49,112 +49,124 @@
 
 </div>
 <!-- edit modal  -->
-<div class="update-modal absolute top-10 left-1/2 -translate-x-1/2 z-10  bg-primary shadow-md px-6 py-4 hidden overflow-scroll max-h-96 w-1/2">
-    <h2 class="text-2xl">Edit Product</h2>
-    <svg xmlns="http://www.w3.org/2000/svg"
-        class="w-3 cursor-pointer shrink-0 fill-gray-400 hover:fill-error absolute top-5 right-5" id="update-close-mark" viewBox="0 0 320.591 320.591">
-        <path
-            d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
-            data-original="#000000"></path>
-        <path
-            d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
-            data-original="#000000"></path>
-    </svg>
-    <form method="post" id="update-modal" class="mt-4">
-        <div class="flex gap-10">
-            <div class="grid flex-1">
-                <label for="product_name">Product Name</label>
-                <input id="update-product-name" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="product_name">
+<!-- edit modal  -->
+<div id="update" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem) before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] max-h-full update-modal hidden">
+    <div class="absolute p-4 w-full max-w-xl max-h-full left-1/2 -translate-x-1/2">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Update Product
+                </h3>
+                <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="update" id="update-close-mark">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
             </div>
-            <div class="grid flex-1">
-                <label for="product_code">Product Code</label>
-                <input readonly='true' id="update-product-code" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="product_code">
-            </div>
-        </div>
-        <div class="flex gap-10 mt-12">
-            <div class="grid flex-1">
-                <label for="category">Category</label>
-                <select id="update-category" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="category" id="category">
-                    <option value=""></option>
-                    <option value="Hello">Hello</option>
-                </select>
-            </div>
-            <div class="grid flex-1">
-                <label for="brand">Brand</label>
-                <select id="update-brand" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="brand" id="brand">
-                    <option value=""></option>
-                    <option value="Hello">Hello</option>
-                </select>
-            </div>
-        </div>
-        <div class="flex gap-10 mt-12">
-            <div class="grid flex-1">
-                <label for="barcode_symbology">Barcode Symbology</label>
-                <input id="update-barcode-symbology" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="barcode_symbology">
-            </div>
-            <div class="grid flex-1">
-                <label for="product_cost">Product Cost</label>
-                <input id="update-product-cost" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="product_cost">
-            </div>
-        </div>
-        <div class="flex gap-10 mt-12">
-            <div class="grid flex-1">
-                <label for="product_price">Product Price</label>
-                <input id="update-product-price" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="product_price">
-            </div>
-            <div class="grid flex-1">
-                <label for="product_unit">Product Unit</label>
-                <select id='update-product-unit' class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="product_unit" id="product_unit">
-                    <option value=""></option>
-                    <option value="Hello">Hello</option>
-                </select>
-            </div>
-        </div>
-        <div class="flex gap-10 mt-12">
-            <div class="grid flex-1">
-                <label for="sales_unit">Sales Unit</label>
-                <select id="update-sales-unit" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="sales_unit" id="sales_unit">
-                    <option value=""></option>
-                    <option value="Hello">Hello</option>
-                </select>
-            </div>
-            <div class="grid flex-1">
-                <label for="purchase_unit">Purchase Unit</label>
-                <select id="update-purchase-unit" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="purchase_unit" id="purchase_unit">
-                    <option value=""></option>
-                    <option value="Hello">Hello</option>
-                </select>
-            </div>
-        </div>
-        <div class="flex gap-10 mt-12">
-            <div class="grid flex-1">
-                <label for="stocks_alert">Stocks Alert</label>
-                <input id="update-stocks-alert" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="integer" name="stocks_alert">
-            </div>
-            <div class="grid flex-1">
-                <label for="order_tax">Order Tax</label>
-                <input id="update-order-tax" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="number" name="order_tax">
-            </div>
-        </div>
-        <div class="flex gap-10 mt-12">
-            <div class="grid flex-1">
-                <label for="tax_type">Tax type</label>
-                <select id="update-tax-type" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="tax_type" id="tax_type">
-                    <option value=""></option>
-                    <option value="Hello">Hello</option>
-                </select>
-            </div>
-        </div>
-        <!-- <div class="flex gap-10 mt-12">
+            <!-- Modal body -->
+            <div class="p-4 md:p-5">
+                <form method="post" id="update-modal" class="mt-4">
+                    <div class="flex gap-10">
+                        <div class="grid flex-1">
+                            <label for="product_name">Product Name</label>
+                            <input id="update-product-name" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="product_name">
+                        </div>
+                        <div class="grid flex-1">
+                            <label for="product_code">Product Code</label>
+                            <input readonly='true' id="update-product-code" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="product_code">
+                        </div>
+                    </div>
+                    <div class="flex gap-10 mt-12">
+                        <div class="grid flex-1">
+                            <label for="category">Category</label>
+                            <select id="update-category" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="category" id="category">
+                                <option value=""></option>
+                                <option value="Hello">Hello</option>
+                            </select>
+                        </div>
+                        <div class="grid flex-1">
+                            <label for="brand">Brand</label>
+                            <select id="update-brand" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="brand" id="brand">
+                                <option value=""></option>
+                                <option value="Hello">Hello</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-10 mt-12">
+                        <div class="grid flex-1">
+                            <label for="barcode_symbology">Barcode Symbology</label>
+                            <input id="update-barcode-symbology" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="barcode_symbology">
+                        </div>
+                        <div class="grid flex-1">
+                            <label for="product_cost">Product Cost</label>
+                            <input id="update-product-cost" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="product_cost">
+                        </div>
+                    </div>
+                    <div class="flex gap-10 mt-12">
+                        <div class="grid flex-1">
+                            <label for="product_price">Product Price</label>
+                            <input id="update-product-price" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="text" name="product_price">
+                        </div>
+                        <div class="grid flex-1">
+                            <label for="product_unit">Product Unit</label>
+                            <select id='update-product-unit' class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="product_unit" id="product_unit">
+                                <option value=""></option>
+                                <option value="Hello">Hello</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-10 mt-12">
+                        <div class="grid flex-1">
+                            <label for="sales_unit">Sales Unit</label>
+                            <select id="update-sales-unit" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="sales_unit" id="sales_unit">
+                                <option value=""></option>
+                                <option value="Hello">Hello</option>
+                            </select>
+                        </div>
+                        <div class="grid flex-1">
+                            <label for="purchase_unit">Purchase Unit</label>
+                            <select id="update-purchase-unit" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="purchase_unit" id="purchase_unit">
+                                <option value=""></option>
+                                <option value="Hello">Hello</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex gap-10 mt-12">
+                        <div class="grid flex-1">
+                            <label for="stocks_alert">Stocks Alert</label>
+                            <input id="update-stocks-alert" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="integer" name="stocks_alert">
+                        </div>
+                        <div class="grid flex-1">
+                            <label for="order_tax">Order Tax</label>
+                            <input id="update-order-tax" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" type="number" name="order_tax">
+                        </div>
+                    </div>
+                    <div class="flex gap-10 mt-12">
+                        <div class="grid flex-1">
+                            <label for="tax_type">Tax type</label>
+                            <select id="update-tax-type" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent" name="tax_type" id="tax_type">
+                                <option value=""></option>
+                                <option value="Hello">Hello</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div class="flex gap-10 mt-12">
             <div class="grid flex-1">
                 <label for="notes">Notes</label>
                 <textarea id="update-notes" class="px-4 py-2 bg-dark-variant-2 rounded-xl outline-accent resize-none" name="notes" id="notes" rows="6" placeholder="A few words..."></textarea>
             </div>
         </div> -->
 
-        <button type="submit" class="btn mt-4">Submit</button>
-    </form>
+                    <button type="submit" class="btn mt-4">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
 <!-- delete modal  -->
 <?= view_cell('ModalDeleteCell', 'type=unit') ?>
 <script src="<?= base_url() ?>js/product/product.js"></script>

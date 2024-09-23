@@ -56,6 +56,7 @@ $(document).ready(function () {
       processData: false, // Important for file uploads
       dataType: "json",
       success: function (response) {
+        $(".create-modal").hide();
         if (response.message === "error") {
           $(".brand-list").html(response.value);
           $(".form-error").show();
@@ -68,7 +69,6 @@ $(document).ready(function () {
             $(".form-create-success").hide("slow");
           }, 5000);
           $(".brand-list").html(response.value);
-          $(".create-modal").hide();
         }
       },
     });
