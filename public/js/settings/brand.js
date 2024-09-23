@@ -43,6 +43,68 @@ $(document).ready(function () {
       },
     });
   });
+  $("#create-brand").on("submit", function (e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    var fileInput = $("#create-brand-image")[0].files[0]; // Get the file input
+    formData.append("userfile", fileInput); // Append the file to the FormData object
+    $.ajax({
+      url: BASE_URL + "create-brand", // URL to the upload route
+      method: "POST",
+      data: formData,
+      contentType: false, // Important for file uploads
+      processData: false, // Important for file uploads
+      dataType: "json",
+      success: function (response) {
+        if (response.message === "error") {
+          $(".brand-list").html(response.value);
+          $(".form-error").show();
+          setTimeout(function () {
+            $(".form-error").hide("slow");
+          }, 5000);
+        } else if (response.message === "success") {
+          $(".form-create-success").show();
+          setTimeout(function () {
+            $(".form-create-success").hide("slow");
+          }, 5000);
+          $(".brand-list").html(response.value);
+          $(".create-modal").hide();
+        }
+      },
+    });
+  });
+
+  //update
+  $("#update-brand").on("submit", function (e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    var fileInput = $("#update-brand-image")[0].files[0]; // Get the file input
+    formData.append("userfile", fileInput); // Append the file to the FormData object
+    $.ajax({
+      url: BASE_URL + "update-brand", // URL to the upload route
+      method: "POST",
+      data: formData,
+      contentType: false, // Important for file uploads
+      processData: false, // Important for file uploads
+      dataType: "json",
+      success: function (response) {
+        $(".update-modal").hide();
+        if (response.message === "error") {
+          $(".brand-list").html(response.value);
+          $(".form-error").show();
+          setTimeout(function () {
+            $(".form-error").hide("slow");
+          }, 5000);
+        } else if (response.message === "success") {
+          $(".form-update-success").show();
+          setTimeout(function () {
+            $(".form-update-success").hide("slow");
+          }, 5000);
+          $(".brand-list").html(response.value);
+        }
+      },
+    });
+  });
 
   //load brand table template
   $.ajax({

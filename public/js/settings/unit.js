@@ -1,4 +1,36 @@
 $(document).ready(function () {
+  //create unit
+  $(document).on("submit", "#create-unit", function (e) {
+    e.preventDefault();
+    const formValue = $(this).serialize();
+    $.ajax({
+      url: BASE_URL + "create-unit",
+      type: "POST",
+      data: formValue,
+      dataType: "json",
+      beforeSend: () => {
+        $(".loader").show();
+      },
+      success: (response) => {
+        $(".create-modal").hide();
+        if (response.message === "error") {
+          $(".form-error").show();
+          setTimeout(function () {
+            $(".form-error").hide("slow");
+          }, 5000);
+        } else if (response.message === "success") {
+          $(".form-create-success").show();
+          $(".unit-list").html(response.value);
+          setTimeout(function () {
+            $(".form-create-success").hide("slow");
+          }, 5000);
+        }
+      },
+      complete: () => {
+        $(".loader").hide();
+      },
+    });
+  });
   //show update modal
   $(document).on("click", ".btn-update-unit", function () {
     $(".update-modal").show();
@@ -30,10 +62,10 @@ $(document).ready(function () {
             $(".form-error").hide("slow");
           }, 5000);
         } else if (response.message === "success") {
-          $(".form-success").show();
+          $(".form-update-success").show();
           $(".unit-list").html(response.value);
           setTimeout(function () {
-            $(".form-success").hide("slow");
+            $(".form-update-success").hide("slow");
           }, 5000);
         }
       },

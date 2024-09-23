@@ -29,14 +29,14 @@ class Unit extends BaseController
 
 
         if (!$this->validateData($data, $rules)) {
-            return view('pages/settings/unit');
+            return $this->response->setJSON(['message' => 'error', 'value' => $this->unitListTable()]);
         }
 
         // $validData = $this->validator->getValidated();
         if (!$this->unitModel->insert($data, false)) {
-            return view('pages/settings/unit');
+            return $this->response->setJSON(['message' => 'error', 'value' => $this->unitListTable()]);
         }
-        return view('pages/settings/unit');
+        return $this->response->setJSON(['message' => 'success', 'value' => $this->unitListTable()]);
     }
     //update unit 
     public function update()

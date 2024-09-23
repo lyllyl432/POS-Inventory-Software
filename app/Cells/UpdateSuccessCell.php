@@ -1,12 +1,11 @@
 <?php
 
 
-
 namespace App\Cells;
 
 use CodeIgniter\View\Cells\Cell;
 
-class ModalDeleteCell extends Cell
+class UpdateSuccessCell extends Cell
 {
     public $type;
 }

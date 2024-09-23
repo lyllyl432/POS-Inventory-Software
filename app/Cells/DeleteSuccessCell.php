@@ -1,6 +1,5 @@
 <?php
 
-// app/Cells/AlertMessageCell.php
 
 namespace App\Cells;
 

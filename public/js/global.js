@@ -29,8 +29,17 @@ $(document).ready(function () {
     $("#modal-delete").addClass("hidden");
     $("#modal-delete-id").val();
   });
+  //close delete modal
   $("#close-mark").on("click", function () {
     $("#modal-delete").addClass("hidden");
     $("#modal-delete-id").val();
+  });
+  //close update modal
+  $("#update-close-mark").click(() => {
+    $(".update-modal").hide();
+  });
+  //close create modal
+  $("#create-close-mark").click(() => {
+    $(".create-modal").hide();
   });
 });

@@ -38,7 +38,7 @@ class Brand extends BaseController
             ];
 
             if (!$this->validateData($data, $rules)) {
-                return view('pages/settings/brand', ['message' => 'error']);
+                return $this->response->setJSON(['message' => 'error', 'value' => $this->brandListTable()]);
             }
             $img = $this->request->getFile('userfile');
 
@@ -49,7 +49,7 @@ class Brand extends BaseController
             $validData['brand_image'] = 'uploads/' . $imageName;
 
             if (!$this->brandModel->insert($validData, false)) {
-                return view('pages/settings/brand', ['message' => 'error']);
+                return $this->response->setJSON(['message' => 'error', 'value' => $this->brandListTable()]);
             }
         } else {
             $file = new \CodeIgniter\Files\File($this->request->getPost('no_image'));
@@ -59,15 +59,15 @@ class Brand extends BaseController
                 'brand_description' => 'required|max_length[50]',
             ];
             if (!$this->validateData($data, $rules)) {
-                return view('pages/settings/brand', ['message' => 'error']);
+                return $this->response->setJSON(['message' => 'error', 'value' => $this->brandListTable()]);
             }
             $validData  = $this->validator->getValidated();
             $validData['brand_image'] = 'images/' . $imageName;
             if (!$this->brandModel->insert($validData, false)) {
-                return view('pages/settings/brand', ['message' => 'error']);
+                return $this->response->setJSON(['message' => 'error', 'value' => $this->brandListTable()]);
             }
         }
-        return view('pages/settings/brand', ['message' => 'success', 'value' => $this->brandListTable()]);
+        return $this->response->setJSON(['message' => 'success', 'value' => $this->brandListTable()]);
     }
     //update brand
     public function update()
@@ -95,7 +95,7 @@ class Brand extends BaseController
             ];
 
             if (!$this->validateData($data, $rules)) {
-                return view('pages/settings/brand', ['message' => 'error']);
+                return $this->response->setJSON(['message' => 'error', 'value' => $this->brandListTable()]);
             }
             $file = new \CodeIgniter\Files\File($this->request->getPost('recent_image_src'));
 
@@ -119,12 +119,12 @@ class Brand extends BaseController
                 'brand_description' => 'required|max_length[50]',
             ];
             if (!$this->validateData($data, $rules)) {
-                return view('pages/settings/brand', ['message' => 'error']);
+                return $this->response->setJSON(['message' => 'error', 'value' => $this->brandListTable()]);
             }
             $validData  = $this->validator->getValidated();
             $this->brandModel->update($brand_id, $validData);
         }
-        return view('pages/settings/brand', ['message' => 'success', 'value' => $this->brandListTable()]);
+        return $this->response->setJSON(['message' => 'success', 'value' => $this->brandListTable()]);
     }
     //delete brand
     public function delete()

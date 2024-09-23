@@ -48,10 +48,10 @@ $(document).ready(function () {
             $(".form-error").hide("slow");
           }, 5000);
         } else if (response.message === "success") {
-          $(".form-success").show();
+          $(".form-update-success").show();
           $(".product-list").html(response.value);
           setTimeout(function () {
-            $(".form-success").hide("slow");
+            $(".form-update-success").hide("slow");
           }, 5000);
         }
       },
