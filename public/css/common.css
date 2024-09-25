@@ -31,3 +31,6 @@ body {
 .btn.btn-error:hover {
   color: var(--dark-color);
 }
+#side-nav.active {
+  width: 80px;
+}

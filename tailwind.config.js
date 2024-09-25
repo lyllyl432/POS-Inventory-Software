@@ -13,6 +13,11 @@ module.exports = {
         "dark-variant-2": "rgba(0,0,0,0.2)",
         error: "#D11A2A",
       },
+      transitionProperty: {
+        height: "height",
+        width: "width",
+        spacing: "margin,padding",
+      },
     },
   },
   plugins: [],

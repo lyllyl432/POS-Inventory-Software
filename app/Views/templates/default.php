@@ -19,8 +19,10 @@
 <body>
     <div class="flex">
         <?= $this->include('templates/sidebar') ?>
-        <main class="max-w-5xl pt-6 flex-1 mx-auto">
-            <?= $this->renderSection('content') ?>
+        <main class="max-w-5xl pt-6 flex-1 md:ml-60 ml-28 pr-4 transition-spacing duration-150" id="side-content">
+            <div class="">
+                <?= $this->renderSection('content') ?>
+            </div>
         </main>
     </div>
     <!-- base url for external js  -->
