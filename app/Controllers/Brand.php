@@ -2,12 +2,21 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Psr\Log\LoggerInterface;
+
 class Brand extends BaseController
 {
     protected $helpers = ['form', 'filesystem'];
     protected $brandModel;
-    public function __construct()
-    {
+    public function initController(
+        RequestInterface $request,
+        ResponseInterface $response,
+        LoggerInterface $logger
+    ) {
+        parent::initController($request, $response, $logger);
+
         $this->brandModel = model('BrandModel');
     }
     public function index(): string

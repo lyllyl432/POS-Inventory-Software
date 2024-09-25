@@ -2,13 +2,21 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Psr\Log\LoggerInterface;
+
 class Product extends BaseController
 {
     protected $helpers = ['form'];
     protected $productModel;
+    public function initController(
+        RequestInterface $request,
+        ResponseInterface $response,
+        LoggerInterface $logger
+    ) {
+        parent::initController($request, $response, $logger);
 
-    public function __construct()
-    {
         $this->productModel = model('ProductModel');
     }
 

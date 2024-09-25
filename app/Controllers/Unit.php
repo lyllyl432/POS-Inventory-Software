@@ -2,13 +2,25 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Psr\Log\LoggerInterface;
+
 class Unit extends BaseController
 {
     protected $helpers = ['form'];
     protected $unitModel;
-    public function __construct()
-    {
+    public function initController(
+        RequestInterface $request,
+        ResponseInterface $response,
+        LoggerInterface $logger
+    ) {
+        parent::initController($request, $response, $logger);
+
         $this->unitModel = model('UnitModel');
+
+        // Log that the controller has been initialized
+        $logger->info('Controller Initialized');
     }
     public function index(): string
     {
