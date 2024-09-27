@@ -5,7 +5,11 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+// Authentication routes 
+$routes->get('/', 'SignIn::index');
+$routes->get('/register', 'SignUp::index');
+$routes->get('dashboard', 'Dashboard::index');
+
 //create product routes
 $routes->get('product', 'Product::index');
 $routes->get('product/table', 'Product::productListTable');

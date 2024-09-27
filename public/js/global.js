@@ -32,12 +32,10 @@ $(document).ready(function () {
       $(".collapsed-icon").show();
       $("#side-content").css({
         "margin-left": "100px",
-        "max-width": "100%",
       });
     } else {
       $("#side-content").css({
         "margin-left": "240px",
-        "max-width": "1024px",
       });
       $("#side-nav-logo").show();
       $(".main-links").show();

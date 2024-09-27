@@ -12,6 +12,7 @@
 <!-- delete message cell  -->
 <?= view_cell('DeleteSuccessCell', 'type=Unit') ?>
 <div class="mt-24">
+
     <div class="flex justify-between">
         <div class="flex gap-2 items-center">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
