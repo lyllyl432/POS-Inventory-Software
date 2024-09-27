@@ -33,4 +33,9 @@ body {
 }
 #side-nav.active {
   width: 80px;
+  overflow: visible;
+}
+.shrink-sidebar-links.active {
+  visibility: visible !important;
+  top: -24px;
 }
