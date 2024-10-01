@@ -1,4 +1,4 @@
-    <nav class="bg-secondary h-screen overflow-y-scroll  fixed transition-width  ease-out md:w-56 w-20" id="side-nav">
+    <nav class="bg-secondary h-screen overflow-y-scroll  fixed transition-width  ease-out md:w-56 w-20 z-10" id="side-nav">
         <div class="flex items-center justify-between  bg-accent px-4 py-6">
             <img class="max-w-12" id="side-nav-logo" src="<?= base_url() ?>images/logo.png" alt="logo">
             <div id="side-nav-hamburger" class="hidden md:block">

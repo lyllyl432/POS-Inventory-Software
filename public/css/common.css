@@ -36,6 +36,6 @@ body {
   overflow: visible;
 }
 .shrink-sidebar-links.active {
-  visibility: visible !important;
+  visibility: visible;
   top: -24px;
 }

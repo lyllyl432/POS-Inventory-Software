@@ -34,26 +34,32 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($list as $unit) : ?>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <?= $unit['unit_name'] ?>
-                </td>
-                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <?= $unit['unit_short_name'] ?>
-                </td>
-                <td class="px-6 py-4 flex gap-4 ">
-                    <div>
-                        <input type="hidden" name="hide_update_id" value="<?= $unit['id'] ?>">
-                        <button class="btn btn-update-unit" type="submit">Edit</button>
-                    </div>
+        <?php if ($list): ?>
+            <?php foreach ($list as $unit) : ?>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <?= $unit['unit_name'] ?>
+                    </td>
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <?= $unit['unit_short_name'] ?>
+                    </td>
+                    <td class="px-6 py-4 flex gap-4 ">
+                        <div>
+                            <input type="hidden" name="hide_update_id" value="<?= $unit['id'] ?>">
+                            <button class="btn btn-update-unit" type="submit">Edit</button>
+                        </div>
 
-                    <div>
-                        <input type="hidden" name="hide_delete_id" class="delete-unit-id" value="<?= $unit['id'] ?>">
-                        <button class="btn btn-error btn-delete-unit" type="submit">Delete</button>
-                    </div>
-                </td>
+                        <div>
+                            <input type="hidden" name="hide_delete_id" class="delete-unit-id" value="<?= $unit['id'] ?>">
+                            <button class="btn btn-error btn-delete-unit" type="submit">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+        <?php else: ?>
+            <tr>
+                <td colspan='14' class="text-center border-t border-b py-4">No data for table</td>
             </tr>
-        <?php endforeach ?>
+        <?php endif; ?>
     </tbody>
 </table>

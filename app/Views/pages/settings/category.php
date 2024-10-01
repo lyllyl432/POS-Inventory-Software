@@ -45,6 +45,33 @@
     <div class="relative overflow-x-auto category-list mt-10 min-h-4">
         <img class="w-12 absolute left-1/2 -translate-x-1/2" src="<?= base_url() ?>icons/loader.gif">
     </div>
+    <div id="pagination" class="mt-4 flex justify-between text-sm">
+        <p>Rows per page: <span class="font-bold">10 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4 inline-block ml-1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg></span></p>
+        <div class="flex gap-2 items-center">
+            <p class="text-dark-variant">0 - 0 of 0</p>
+            <div class="flex gap-4">
+                <div class="cursor-pointer">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left-circle inline hover:fill-black hover:text-primary">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 8 8 12 12 16"></polyline>
+                        <line x1="16" y1="12" x2="8" y2="12"></line>
+                    </svg>
+                    <span>Prev</span>
+                </div>
+                <div class="cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle inline  hover:fill-black hover:text-primary">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 16 16 12 12 8"></polyline>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                    <span>Next</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- create modal -->
 <div id="create-modal" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem) before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] max-h-full create-modal hidden">
