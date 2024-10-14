@@ -26,21 +26,6 @@
                 Product Unit
             </th>
             <th scope="col" class="px-6 py-3">
-                Sales Unit
-            </th>
-            <th scope="col" class="px-6 py-3">
-                Purchase Unit
-            </th>
-            <th scope="col" class="px-6 py-3">
-                Stocks Alert
-            </th>
-            <th scope="col" class="px-6 py-3">
-                Order Tax
-            </th>
-            <th scope="col" class="px-6 py-3">
-                Tax type
-            </th>
-            <th scope="col" class="px-6 py-3">
                 Actions
             </th>
         </tr>
@@ -74,21 +59,6 @@
                     </td>
                     <td class="px-6 py-4">
                         <?= $product['product_unit'] ?>
-                    </td>
-                    <td class="px-6 py-4">
-                        <?= $product['sales_unit'] ?>
-                    </td>
-                    <td class="px-6 py-4">
-                        <?= $product['purchase_unit'] ?>
-                    </td>
-                    <td class="px-6 py-4">
-                        <?= $product['stocks_alert'] ?>
-                    </td>
-                    <td class="px-6 py-4">
-                        <?= $product['order_tax'] ?>
-                    </td>
-                    <td class="px-6 py-4">
-                        <?= $product['tax_type'] ?>
                     </td>
                     <td class="px-6 py-4 flex gap-4">
                         <div>

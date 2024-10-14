@@ -103,6 +103,33 @@ $(document).ready(function () {
       $(".loader").hide();
     },
   });
+  //get category list
+  $.ajax({
+    url: BASE_URL + "product/category",
+    type: "GET",
+    dataType: "html",
+    success: (value) => {
+      $("#category").html(value);
+    },
+  });
+  //get brand list
+  $.ajax({
+    url: BASE_URL + "product/brand",
+    type: "GET",
+    dataType: "html",
+    success: (value) => {
+      $("#brand").html(value);
+    },
+  });
+  //get unit list
+  $.ajax({
+    url: BASE_URL + "product/unit",
+    type: "GET",
+    dataType: "html",
+    success: (value) => {
+      $("#product_unit").html(value);
+    },
+  });
   $("#create-unit").on("click", function () {
     $(".modal").show();
   });

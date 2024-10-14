@@ -10,6 +10,7 @@ class Product extends BaseController
 {
     protected $helpers = ['form'];
     protected $productModel;
+    protected $db;
     public function initController(
         RequestInterface $request,
         ResponseInterface $response,
@@ -18,6 +19,7 @@ class Product extends BaseController
         parent::initController($request, $response, $logger);
 
         $this->productModel = model('ProductModel');
+        $this->db = db_connect();
     }
 
     public function index(): string
@@ -36,11 +38,11 @@ class Product extends BaseController
             'product_cost' => $this->request->getPost('product_cost'),
             'product_price' => $this->request->getPost('product_price'),
             'product_unit' => $this->request->getPost('product_unit'),
-            'sales_unit' => $this->request->getPost('sales_unit'),
-            'purchase_unit' => $this->request->getPost('purchase_unit'),
-            'stocks_alert' => $this->request->getPost('stocks_alert'),
-            'order_tax' => $this->request->getPost('order_tax'),
-            'tax_type' => $this->request->getPost('tax_type'),
+            // 'sales_unit' => $this->request->getPost('sales_unit'),
+            // 'purchase_unit' => $this->request->getPost('purchase_unit'),
+            // 'stocks_alert' => $this->request->getPost('stocks_alert'),
+            // 'order_tax' => $this->request->getPost('order_tax'),
+            // 'tax_type' => $this->request->getPost('tax_type'),
         ];
         $rules = [
             'product_code' => 'required',
@@ -48,14 +50,14 @@ class Product extends BaseController
             'category' => 'required|max_length[30]',
             'brand' => 'required|max_length[30]',
             'barcode_symbology' => 'required|max_length[30]',
-            'sales_unit' => 'required|max_length[20]',
+            // 'sales_unit' => 'required|max_length[20]',
             'product_cost' => 'required|integer',
             'product_price' => 'required|integer',
             'product_unit' => 'required|max_length[10]',
-            'purchase_unit' => 'required|max_length[10]',
-            'stocks_alert' => 'required|integer',
-            'order_tax' => 'integer',
-            'tax_type' => 'max_length[20]',
+            // 'purchase_unit' => 'required|max_length[10]',
+            // 'stocks_alert' => 'required|integer',
+            // 'order_tax' => 'integer',
+            // 'tax_type' => 'max_length[20]',
         ];
         if (!$this->validateData($data, $rules)) {
             exit(var_dump($this->validator->getErrors())); //to change
@@ -80,11 +82,11 @@ class Product extends BaseController
             'product_cost' => $this->request->getPost('product_cost'),
             'product_price' => $this->request->getPost('product_price'),
             'product_unit' => $this->request->getPost('product_unit'),
-            'sales_unit' => $this->request->getPost('sales_unit'),
-            'purchase_unit' => $this->request->getPost('purchase_unit'),
-            'stocks_alert' => $this->request->getPost('stocks_alert'),
-            'order_tax' => $this->request->getPost('order_tax'),
-            'tax_type' => $this->request->getPost('tax_type'),
+            // 'sales_unit' => $this->request->getPost('sales_unit'),
+            // 'purchase_unit' => $this->request->getPost('purchase_unit'),
+            // 'stocks_alert' => $this->request->getPost('stocks_alert'),
+            // 'order_tax' => $this->request->getPost('order_tax'),
+            // 'tax_type' => $this->request->getPost('tax_type'),
         ];
 
 
@@ -93,14 +95,14 @@ class Product extends BaseController
             'category' => 'required|max_length[30]',
             'brand' => 'required|max_length[30]',
             'barcode_symbology' => 'required|max_length[30]',
-            'sales_unit' => 'required|max_length[20]',
+            // 'sales_unit' => 'required|max_length[20]',
             'product_cost' => 'required|integer',
             'product_price' => 'required|integer',
             'product_unit' => 'required|max_length[10]',
-            'purchase_unit' => 'required|max_length[10]',
-            'stocks_alert' => 'required|integer',
-            'order_tax' => 'integer',
-            'tax_type' => 'max_length[20]',
+            // 'purchase_unit' => 'required|max_length[10]',
+            // 'stocks_alert' => 'required|integer',
+            // 'order_tax' => 'integer',
+            // 'tax_type' => 'max_length[20]',
         ];
         if (!$this->validateData($data, $rules)) {
             return $this->response->setJSON(['message' => 'error']);
@@ -127,5 +129,29 @@ class Product extends BaseController
     public function productList()
     {
         return view('pages/product/product-list');
+    }
+    //get the product category list
+    public function categorySelection()
+    {
+        $builder = $this->db->table('category');
+        $categories = $builder->get()->getResult();
+        return view('pages/product/category-list', ['categories' => $categories]);
+    }
+    //get the product brand list
+    public function brandSelection()
+    {
+        $builder = $this->db->table('brand');
+        $brands = $builder->get()->getResult();
+        return view('pages/product/brand-list', ['brands' => $brands]);
+    }
+    //get the product warehouse list
+    public function warehouseSelection() {}
+    //get the product unit list
+    public function unitSelection()
+    {
+        $builder = $this->db->table('unit');
+        $units = $builder->get()->getResult();
+        // exit(var_dump($units));
+        return view('pages/product/unit-list', ['units' => $units]);
     }
 }

@@ -17,6 +17,11 @@ $routes->get('product/list', 'Product::productList');
 $routes->post('create-product', 'Product::create');
 $routes->post('update-product', 'Product::update');
 $routes->post('delete-product', 'Product::delete');
+$routes->get('product/category', 'Product::categorySelection');
+$routes->get('product/brand', 'Product::brandSelection');
+$routes->get('product/unit', 'Product::unitSelection');
+
+
 // unit setting routes
 $routes->get('unit', 'Unit::index');
 $routes->post('create-unit', 'Unit::create');
